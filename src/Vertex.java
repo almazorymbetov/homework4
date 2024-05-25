@@ -7,7 +7,16 @@ public class Vertex<V>{
         this.data=data;
         this.adjacentVertices=new HashMap<>();
     }
+    public V get(){
+        return data;
+    }
+    public Map<Vertex<V>,Double> getA(){
+        return adjacentVertices;
+    }
     public void addAdjacentVertex(Vertex<V> destination,Double weight){
         adjacentVertices.put(destination,weight);
+    }
+    public String toStr(){
+        return data.toString();
     }
 }
