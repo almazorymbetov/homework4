@@ -1,5 +1,4 @@
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 public class Vertex<V>{
     private V data;
     private Map<Vertex<V>,Double> adjacentVertices;
@@ -19,7 +18,7 @@ public class Vertex<V>{
     public Map<Vertex<V>, Double> getAdjacentVertex(){
         return adjacentVertices;
     }
-    public String toStr(){
+    public String toString(){
         return data.toString();
     }
 }

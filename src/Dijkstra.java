@@ -1,20 +1,28 @@
 import java.util.*;
-public class DijkstraSearch<V>implements Search<V>{
-    @Override
+public class Dijkstra<V>implements Search<V>{
+    private Graph<V> Graph;
+    public Dijkstra(Graph<V> graph){
+        this.Graph=graph;
+    }
     public List<Vertex<V>> search(Vertex<V> start,Vertex<V> end){
         Map<Vertex<V>,Double> distances=new HashMap<>();
         Map<Vertex<V>,Vertex<V>> previous=new HashMap<>();
         PriorityQueue<Vertex<V>> pq=new PriorityQueue<>(Comparator.comparing(distances::get));
         Set<Vertex<V>> visited=new HashSet<>();
-        for(Vertex<V> vertex:distances.keySet()){
-            distances.put(vertex,Double.MAX_VALUE);
+        for(Vertex<V> vertex:Graph.getV()){
+            distances.put(vertex, Double.POSITIVE_INFINITY);
         }
+        distances.put(start, 0.0);
         distances.put(start,0.0);
         pq.add(start);
         while(!pq.isEmpty()){
             Vertex<V> current=pq.poll();
-            if(current.equals(end))return conspath(previous,end);
-            if(visited.contains(current))continue;
+            if(current.equals(end)){
+                return conspath(previous,end);
+            }
+            if(visited.contains(current)){
+                continue;
+            }
             visited.add(current);
             for(Map.Entry<Vertex<V>,Double> neighborEntry:current.getAdjacentVertex().entrySet()){
                 Vertex<V> neighbor=neighborEntry.getKey();

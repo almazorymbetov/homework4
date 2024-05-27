@@ -8,7 +8,9 @@ public class BFS<V>implements Search<V>{
         visited.add(start);
         while(!queue.isEmpty()){
             Vertex<V> current=queue.poll();
-            if(current.equals(end))return conspath(previous,end);
+            if(current.equals(end)){
+                return conspath(previous,end);
+            }
             for(Vertex<V> neighbor:current.getAdjacentVertex().keySet()){
                 if(!visited.contains(neighbor)){
                     queue.add(neighbor);

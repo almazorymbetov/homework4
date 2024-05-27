@@ -1,3 +1,4 @@
+import java.util.*;
 public class Edge<V>{
     private Vertex<V> source;
     private Vertex<V> dest;
@@ -16,7 +17,7 @@ public class Edge<V>{
     public Double getW(){
         return weight;
     }
-    public String toStr(){
+    public String toString(){
         return source+" "+dest+" "+weight;
     }
 }
